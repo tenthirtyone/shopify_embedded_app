@@ -44,3 +44,9 @@ Server
 For development, do
 
 `$ sudo PORT=80 SSLPORT=443 node app.js`
+
+Visit https://localdev.com. Accept SSL exception. App will bomb out (Shopify params are undefined).
+
+Go back to the app listing. View the listing and click 'Get'. If the server is working it will ask you to verify permissions for the scope defined in lib/config.js. Accept. You will redirect to your store and, hopefully, the app will open.
+
+Then... Use https://github.com/tenthirtyone/shopify_dev_tools to fill your store with products and customers

@@ -20,15 +20,13 @@ router.get('/', (req, res) => {
     let token = req.session.oauth_access_token;
     ShopifyService.verifyToken(url, token, (err, body) => {
       if (err) {
-        req.session.destroy((err) => {
-          res.redirect(req.originalUrl);
-        });
+        req.session = null;
+        res.redirect(req.originalUrl);
       } else {
         // Request is fine, api error?
         if (body.errors) {
-          req.session.destroy((err) => {
-            res.redirect(req.originalUrl);
-          });
+          req.session = null;
+          res.redirect(req.originalUrl);
         } else {
           res.redirect('/app');
         }
@@ -46,15 +44,13 @@ router.get('/authenticate', (req, res) => {
     let token = req.session.oauth_access_token;
     ShopifyService.verifyToken(url, token, (err, body) => {
       if (err) {
-        req.session.destroy((err) => {
-          res.redirect(req.originalUrl);
-        });
+        req.session = null;
+        res.redirect(req.originalUrl);
       } else {
         // Request is fine, api error?
         if (body.errors) {
-          req.session.destroy((err) => {
-            res.redirect(req.originalUrl);
-          });
+          req.session = null;
+          res.redirect(req.originalUrl);
         } else {
           res.redirect('/app');
         }
