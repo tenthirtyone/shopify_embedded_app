@@ -34,5 +34,9 @@ Server
 
 `$ cd keys && openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout key.pem -out cert.pem`
 
+/etc/hosts
+
+`127.0.0.1 localdev.com`
+
 ## Usage
 `$ node app.js`
