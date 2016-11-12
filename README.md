@@ -20,7 +20,7 @@ Skeleton for Embedded Shopify Apps.
 6. Save
 7. View App Listing
 
-Once the server is built and running the app use this listing to install to your development store.
+Once the server is built and running open your development store. Then use this listing to install to your development store.
 
 Build client
 
@@ -31,6 +31,8 @@ $ cd client && npm install && gulp
 Server
 
 `$ npm install`
+
+`$ cd keys && openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout key.pem -out cert.pem`
 
 ## Usage
 `$ node app.js`
