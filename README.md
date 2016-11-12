@@ -9,6 +9,7 @@ Skeleton for Embedded Shopify Apps.
 
 ![Missing Image](https://github.com/tenthirtyone/shopify_embedded_app/blob/master/assets/CreateDevStore.png?raw=true "Create Dev Store")
 3. Create an App
+* Add credentials to lib/config.js
 
 ![Missing Image](https://github.com/tenthirtyone/shopify_embedded_app/blob/master/assets/CreateApp.png?raw=true "Create App")
 4. Configure App (Apps => AppName => Edit App Settings)
