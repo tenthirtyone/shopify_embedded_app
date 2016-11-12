@@ -12,9 +12,8 @@
   <meta name="author" content="Alex Sherbuck">
   <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="styles/styles.css">
   <script src="https://cdn.shopify.com/s/assets/external/app.js"></script>
   <!-- Shims for old browsers -->
@@ -27,8 +26,8 @@
   <div navbar></div>
   <ui-view></ui-view>
   <div footer></div>
-  <script type="text/javascript" src="//code.jquery.com/jquery-2.0.2.js"></script>
-  <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="scripts/vendors.js"></script>
   <script src="scripts/scripts.js"></script>
   <!-- Bootstrap Angular -->
@@ -43,17 +42,8 @@
     ShopifyApp.Bar.loadingOff();
   });
 
-  angular.element(document).ready(function() {
+  angular.element(document).ready(function () {
       angular.bootstrap(document, ['App']);
-
-      // Response Headers
-      angular.module('App')
-      .config(['$httpProvider', function ($httpProvider) {
-          $httpProvider.defaults.headers.common = {
-            'X-Shopify-Access-Token': '<%= shopToken %>',
-          };
-        },
-      ]);
     });
 
   </script>

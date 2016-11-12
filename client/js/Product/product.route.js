@@ -19,8 +19,8 @@
           controller: 'ProductController',
           controllerAs: 'product',
           navItem: {
-            displayText: 'Product',
-            state: 'product',
+            displayName: 'Product',
+            sref: 'product',
           },
         },
       },

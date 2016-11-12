@@ -28,6 +28,8 @@ function makeRequest(shopUrl, shopToken, qs, cb) {
 }
 
 function getShopInfo(shopUrl, shopToken, cb) {
+  console.log(shopUrl)
+  console.log(shopToken)
   shopUrl = shopUrl + '/admin/shop.json';
   return makeRequest(shopUrl, shopToken, '', cb);
 }
@@ -40,6 +42,11 @@ function getShopOrders(shopUrl, shopToken, qs, cb) {
 
 function getShopCustomers(shopUrl, shopToken, cb) {
   shopUrl = shopUrl + '/admin/customers.json';
+  return makeRequest(shopUrl, shopToken, '', cb);
+}
+
+function getShopProducts(shopUrl, shopToken, cb) {
+  shopUrl = shopUrl + '/admin/products.json';
   return makeRequest(shopUrl, shopToken, '', cb);
 }
 
@@ -87,4 +94,5 @@ module.exports = {
   getShopOrders: getShopOrders,
   getShopCustomers: getShopCustomers,
   postShopOrder: postShopOrder,
+  getShopProducts: getShopProducts,
 }

@@ -46,11 +46,60 @@ angular.module('App.directives', []);
   angular.module('App.home')
     .controller('AboutController', AboutController);
 
-  function AboutController() {
+  AboutController.$inject = ['AboutService'];
+
+  function AboutController(AboutService) {
     var vm = this;
+    vm.shopInfo = getShopInfo();
+
+    init();
+
+    function init() {
+
+    }
+
+    function getShopInfo() {
+      AboutService.getShopInfo()
+      .then(function (res) {
+        console.log(res)
+        vm.shopInfo = JSON.stringify(res, null, 2);
+      });
+    }
 
     return vm;
   }
+}());
+
+(function () {
+  'use strict';
+
+  angular.module('App.home')
+  .factory('AboutService', AboutService);
+
+  AboutService.$inject = ['$http', '$state', '$timeout'];
+
+  function AboutService($http, $state, $timeout) {
+
+    return {
+      getShopInfo: getShopInfo,
+    };
+
+    function getShopInfo() {
+      return $http.get('/api/shop/')
+        .then(getShopEmailComplete)
+        .catch(getShopEmailFailed);
+
+      function getShopEmailComplete(response) {
+        return response.data;
+      }
+
+      function getShopEmailFailed(error) {
+        console.log('XHR Failed for getShopEmail.' + error.data);
+      }
+    }
+
+  }
+
 }());
 
 (function () {
@@ -74,8 +123,8 @@ angular.module('App.directives', []);
           controller: 'AboutController',
           controllerAs: 'about',
           navItem: {
-            displayText: 'About',
-            state: 'about',
+            displayName: 'About',
+            sref: 'about',
           },
         },
       },
@@ -93,43 +142,11 @@ angular.module('App.directives', []);
 
   function HomeController(HomeService, $scope, routerHelper) {
     var vm = this;
-    vm.email = '';
-    vm.showEmailError = false;
-    vm.updateShopEmail = updateShopEmail;
-    vm.sendSalesReport = sendSalesReport;
 
     init();
 
     function init() {
-      //getShopEmail();
-    }
 
-    function getShopEmail() {
-      HomeService.getShopEmail()
-      .then(function (res) {
-        console.log(res);
-        vm.email = res;
-      });
-    }
-
-    function sendSalesReport() {
-      HomeService.sendSalesReport()
-      .then(function (res) {
-        console.log(res);
-      });
-    }
-
-    function updateShopEmail(email) {
-      if (validateEmail(email)) {
-        vm.showEmailError = false;
-      } else {
-        vm.showEmailError = true;
-      }
-    }
-
-    function validateEmail(email) {
-      var re = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
-      return re.test(email);
     }
 
     return vm;
@@ -145,40 +162,11 @@ angular.module('App.directives', []);
   HomeService.$inject = ['$http', '$state', '$timeout'];
 
   function HomeService($http, $state, $timeout) {
-    var APIURL = '/api/shop/';
 
     return {
-      getShopEmail: getShopEmail,
-      sendSalesReport: sendSalesReport,
+
     };
 
-    function getShopEmail(query) {
-      return $http.get(APIURL + 'email', { params: query })
-        .then(getShopEmailComplete)
-        .catch(getShopEmailFailed);
-
-      function getShopEmailComplete(response) {
-        return response.data;
-      }
-
-      function getShopEmailFailed(error) {
-        console.log('XHR Failed for getShopEmail.' + error.data);
-      }
-    }
-
-    function sendSalesReport(query) {
-      return $http.get(APIURL + 'salesreport')
-        .then(sendSalesReportComplete)
-        .catch(sendSalesReportFailed);
-
-      function sendSalesReportComplete(response) {
-        return response.data;
-      }
-
-      function sendSalesReportFailed(error) {
-        console.log('XHR Failed for sendSalesReport.' + error.data);
-      }
-    }
   }
 
 }());
@@ -204,8 +192,8 @@ angular.module('App.directives', []);
           controller: 'HomeController',
           controllerAs: 'app',
           navItem: {
-            displayText: 'Home',
-            state: 'home',
+            displayName: 'Home',
+            sref: 'home',
           },
         },
       },
@@ -219,11 +207,59 @@ angular.module('App.directives', []);
   angular.module('App.product')
     .controller('ProductController', ProductController);
 
-  function ProductController() {
+  ProductController.$inject = ['$http', 'ProductService'];
+
+  function ProductController($http, ProductService) {
     var vm = this;
+    vm.products = [];
+
+    init();
+
+    function init() {
+      getProducts();
+    }
+    function getProducts() {
+      ProductService.getProducts()
+      .then(function (res) {
+        console.log(res)
+        vm.products = res;
+      });
+    }
 
     return vm;
   }
+}());
+
+(function () {
+  'use strict';
+
+  angular.module('App.home')
+  .factory('ProductService', ProductService);
+
+  ProductService.$inject = ['$http', '$state'];
+
+  function ProductService($http, $state) {
+
+    return {
+      getProducts: getProducts,
+    };
+
+    function getProducts() {
+      return $http.get('/api/products', { params: { page: 1 } })
+        .then(getProductsComplete)
+        .catch(getProductsFailed);
+
+      function getProductsComplete(response) {
+        return response.data;
+      }
+
+      function getProductsFailed(error) {
+        console.log('XHR Failed for getProducts.' + error.data);
+      }
+    }
+
+  }
+
 }());
 
 (function () {
@@ -247,8 +283,8 @@ angular.module('App.directives', []);
           controller: 'ProductController',
           controllerAs: 'product',
           navItem: {
-            displayText: 'Product',
-            state: 'product',
+            displayName: 'Product',
+            sref: 'product',
           },
         },
       },

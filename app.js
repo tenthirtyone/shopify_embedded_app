@@ -3,7 +3,8 @@ var app = express();
 var config = require('./lib/config');
 var morgan = require('morgan');
 var ejs = require('ejs');
-var api = require('./controllers/api');
+var auth = require('./controllers/authAPI');
+var api = require('./controllers/API');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('cookie-session');
@@ -27,7 +28,8 @@ app.use(session({
 }));
 app.use(cookieParser());
 
-app.use('/', api);
+app.use('/', auth);
+app.use('/api/', api);
 app.listen(config.port, () => {
   console.log('Listening on port: ' + config.port);
 });

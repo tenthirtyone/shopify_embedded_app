@@ -19,8 +19,8 @@
           controller: 'AboutController',
           controllerAs: 'about',
           navItem: {
-            displayText: 'About',
-            state: 'about',
+            displayName: 'About',
+            sref: 'about',
           },
         },
       },

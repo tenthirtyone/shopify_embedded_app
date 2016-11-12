@@ -19,8 +19,8 @@
           controller: 'HomeController',
           controllerAs: 'app',
           navItem: {
-            displayText: 'Home',
-            state: 'home',
+            displayName: 'Home',
+            sref: 'home',
           },
         },
       },

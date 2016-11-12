@@ -79,7 +79,6 @@ router.get('/app', (req, res) => {
   res.render('index', {
     apiKey:   config.apiKey,
     shopUrl:  req.session.shopUrl,
-    shopToken: req.session.oauth_access_token,
   });
 });
 
@@ -92,7 +91,7 @@ router.get('/auth_token', (req, res) => {
         res.send(500);
         return;
       } else {
-        req.sessproductauth_access_token = accessToken;
+        req.session.oauth_access_token = accessToken;
         res.redirect('/app');
       }
     }

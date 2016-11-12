@@ -42,17 +42,8 @@
     ShopifyApp.Bar.loadingOff();
   });
 
-  angular.element(document).ready(function() {
+  angular.element(document).ready(function () {
       angular.bootstrap(document, ['App']);
-
-      // Response Headers
-      angular.module('App')
-      .config(['$httpProvider', function ($httpProvider) {
-          $httpProvider.defaults.headers.common = {
-            'X-Shopify-Access-Token': '<%= shopToken %>',
-          };
-        },
-      ]);
     });
 
   </script>
