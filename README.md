@@ -39,4 +39,7 @@ Server
 `127.0.0.1 localdev.com`
 
 ## Usage
-`$ node app.js`
+
+For development, do
+
+`$ sudo PORT=80 SSLPORT=443 node app.js`
