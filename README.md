@@ -1,2 +1,2 @@
-# shopify_embedded_app
-Platform for Shopify Embedded Apps
+# embedded_app
+shopify embedded app

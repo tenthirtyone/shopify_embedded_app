@@ -1,0 +1,68 @@
+#home h1 {
+  margin-top: 0;
+  padding-left: 6px; }
+
+#home i {
+  margin: 1rem; }
+
+#home .content {
+  text-align: center; }
+  #home .content .at {
+    margin: 0; }
+  #home .content input {
+    font-size: 22px;
+    height: 42px;
+    text-align: center;
+    display: inline-block;
+    max-width: 325px;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  #home .content input[type="email"] {
+    width: 100%; }
+  #home .content input[type="time"] {
+    width: 225px;
+    font-weight: 700px; }
+  #home .content button {
+    margin-top: 10px;
+    font-size: 22px; }
+
+.navbar {
+  background-color: transparent;
+  border: none; }
+  .navbar ul li {
+    text-transform: uppercase;
+    font-size: 8px; }
+    .navbar ul li a.nav-item:hover, .navbar ul li a.nav-item:focus {
+      color: #f7f7f7; }
+
+#navbar {
+  background-color: #3f3f3f;
+  color: #BBB; }
+  #navbar .navbar-brand {
+    padding: 10px; }
+  #navbar img {
+    width: 28px; }
+  #navbar li a {
+    font-size: 2vh; }
+
+
+html {
+  height: 100%;
+  background-color: #eeeeee; }
+
+body {
+  height: 100%;
+  background-color: #eeeeee;
+  font-family: "Lato", sans-serif;
+  color: #262626; }
+
+a {
+  color: #f7f7f7; }
+  a:hover, a:active, a:focus {
+    color: #f7f7f7; }
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+  cursor: pointer; }
+

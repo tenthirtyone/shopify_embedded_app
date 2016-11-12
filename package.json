@@ -1,0 +1,32 @@
+{
+  "name": "shopify_embedded_app",
+  "version": "1.0.0",
+  "description": "shopify embedded app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tenthirtyone/shopify_embedded_app.git"
+  },
+  "author": "alex sherbuck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tenthirtyone/shopify_embedded_app/issues"
+  },
+  "homepage": "https://github.com/tenthirtyone/shopify_embedded_app#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-alpha.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "morgan": "^1.7.0",
+    "oath": "^1.0.0",
+    "oauth": "^0.9.14",
+    "request": "^2.78.0",
+    "url": "^0.11.0"
+  }
+}

@@ -1,3 +1,9 @@
+# Keys
+keys/
+
+# Config
+lib/config.js
+
 # Logs
 logs
 *.log
